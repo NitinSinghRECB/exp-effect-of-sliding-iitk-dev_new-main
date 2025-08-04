@@ -73,7 +73,7 @@
 	  
 	  <!-- <h3 class="m">Enter the Material (couple Material):</h3><br> -->
 	  <button class="button button1 B " id="moveButton" onclick="showinitialMessage()" >Material </button>
-	  <div id="initialMessage" class="message-text" style="display: none; margin-top: 5px;">Initial Mass of the Sample (m1)</div>  
+	  <div id="initialMessage" class="message-text" style="display: none; margin-top: 5px;">Initial Mass of the Sample m1=16.445gm</div>  
 	  <!-- <button class="button button1 B " id="moveButton2"  onclick="toggleButtons()">Material 2</button> -->
 	  <button class="button button1 hidden B" id="moveButton3">Input Ball</button>
 	  <button class="button button1 hidden B" id="moveButton4" >Insert The Ball</button>
@@ -90,12 +90,16 @@
 <div id="cleanMessage" class="message-text" style="display: none; margin-top: 5px;">Sample cleaned successfully</div>
 
 <button class="button button1 B hidden" id="measureWeightBtn" onclick="showWeightMessage()">Measure the Weight</button>
-<div id="weightMessage" class="message-text" style="display: none; margin-top: 5px;"> Weight measured successfully.<br>Final mass of the Sample (m2)</div>
+<div id="weightMessage" class="message-text" style="display: none; margin-top: 5px;"> Weight measured successfully.<br>Final mass of the Sample m2=16.444gm</div>
 
 	  <button class="button button1 hidden B" id="moveButton8" onclick="showResult()">Perform Optical Profilometry</button>
 	  <button class="button button1 B hidden" id="calculationBtn" onclick="showCalculation()">Calculation</button>
 	  <!-- <button class="button button1 B" id="reverseBtn">Reverse</button> -->
-	   
+<button class="button button1 B hidden" id="cBtn" onclick="showcMessage()">Conclusion</button>
+<div id="cMessage" class="message-text" style="display: none; margin-top: 5px; font-size: 24px; font-weight: bold;">
+  As the sliding speed (RPM) increases, the wear rate of the material also increases.
+</div>
+
 
 	  
 	  
@@ -115,6 +119,9 @@
                         PIN-ON-DISC TRIBOMETER
                     </h4>
                 </center>
+				<!-- Next Slide Button -->
+<!-- <button class="next-slide-btn" onclick="openFormulaModal()">➡️</button> -->
+
 				<div style="height:100% ; width:100%; position: relative;" >
 					<div id="calculationContainer" style="display:none; margin-top:20px;"></div>
 				

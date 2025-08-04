@@ -543,6 +543,9 @@ function showCalculation() {
   const container = document.getElementById("calculationContainer");
   container.style.display = "block";
 
+
+
+
   if (selectedRPM === "25") {
     // Test 2 Data from table
     container.innerHTML = generateTable({
@@ -589,12 +592,15 @@ function generateTable(data) {
       </tr>
       <tr><td>Sample<br>(Ra = Sample roughness)</td><td>${data.sample}</td></tr>
       <tr><td>Load</td><td>${data.load}</td></tr>
-      <tr><td>Wear Volume (Wv)</td><td>${data.Wv} mm³</td></tr>
-      <tr><td>Mass Loss<br>Δm=Change in mass<br>(Δm=m₁−m₂) </td><td>${data.Δm} g</td></tr>
+      
+      <tr>
+  <td>Mass Loss<br>Δm = m₁ − m₂</td>
+  <td>${data.Δm} g</td>
+</tr>
       <tr><td>Coefficient of Friction (cof)</td><td>${data.cof}</td></tr>
       <tr><td>Max Penetration depth (dmax)</td><td>${data.dmax}</td></tr>
       <tr><td>Specific Wear Rate (Sp. Wr)</td><td>${data.SpWr1} mm³/N·m</td></tr>
-      <tr><td>Wear Rate (Wr)</td><td>${data.Wr1} (mass), ${data.Wr2} (volume)</td></tr>
+      <tr><td>Wear Rate (Wr)</td><td>${data.Wr1} (mass)</td></tr>
     </table>
     <p style="margin-top:10px; font-style:italic; font-size:14px;">
       
@@ -602,11 +608,14 @@ function generateTable(data) {
   `;
 }
 
+
+
 function showCalculationButtonsAfterDelay() {
   setTimeout(() => {
     document.getElementById("calculationBtn").classList.remove("hidden");
     document.getElementById("cleanSampleBtn").classList.remove("hidden");
     document.getElementById("measureWeightBtn").classList.remove("hidden");
+    
   }, 5000); // 5 seconds
 }
 
@@ -614,13 +623,16 @@ function showCalculationButtonsAfterDelay() {
 function selectRPM(rpm) {
   selectedRPM = rpm;
   document.getElementById("moveButton8").classList.remove("hidden");  // Show Result button
-  document.getElementById("calculationBtn").classList.remove("hidden");  // Show Calculation button
+  document.getElementById("calculationBtn").classList.remove("hidden");
+   // Show Calculation button
   const calcBtn = document.getElementById('calculationBtn');
   const cleanBtn = document.getElementById("cleanSampleBtn");
   const weightBtn = document.getElementById("measureWeightBtn");
+ 
   calcBtn.style.display = 'none';
   cleanBtn.style.display = 'none';
   weightBtn.style.display = 'none';
+  
 
 
   // Show it again after 5 seconds
@@ -648,3 +660,6 @@ function showWeightMessage() {
   document.getElementById("weightMessage").style.display = "block";
 }
 
+function showcMessage() {
+  document.getElementById("cMessage").style.display = "block";
+}
