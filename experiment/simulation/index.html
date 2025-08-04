@@ -58,19 +58,22 @@
 					<center><img src="c2.jpg" alt="Combination 2" class="img2"></center>
 					<center><strong><h3 style="margin-top:2px;">Tribo-couple for Abrasive wear test</h3></strong></center>
 				</div> -->
+				
 			</div>
 			</section>
 		
         <div class="container">
 
             <section class="main-section">
-				<center><strong><h1 style="margin-top:20px ;">Material Testing</h1></strong></center>
+				<center><strong><h1 style="margin-top:5px ;">Material Testing</h1></strong></center>
                 <div class="control-container">
 
-	  <h2 class="m">Input Parameters:</h2><br>
+	  <h2 class="m" style="margin-top: -40px;">Input Parameters:</h2><br>
+
 	  
 	  <!-- <h3 class="m">Enter the Material (couple Material):</h3><br> -->
-	  <button class="button button1 B " id="moveButton" >Material </button>  
+	  <button class="button button1 B " id="moveButton" onclick="showinitialMessage()" >Material </button>
+	  <div id="initialMessage" class="message-text" style="display: none; margin-top: 5px;">Initial Mass of the Sample (m1)</div>  
 	  <!-- <button class="button button1 B " id="moveButton2"  onclick="toggleButtons()">Material 2</button> -->
 	  <button class="button button1 hidden B" id="moveButton3">Input Ball</button>
 	  <button class="button button1 hidden B" id="moveButton4" >Insert The Ball</button>
@@ -81,9 +84,22 @@
 	  <h3 class="m " >Start Rotation for 30 minute:</h3>
 	  <button class="button button1 B" id="moveButton7" onclick="selectRPM('25')">25 RPM</button>
       <button class="button button1 B" id="moveButton9" onclick="selectRPM('50')">50 RPM</button>
-	  <button class="button button1 B hidden" id="calculationBtn" onclick="showCalculation()">Calculation</button>
+	  
 	</div>
+	  <button class="button button1 B hidden" id="cleanSampleBtn" onclick="showCleanMessage()">Clean the Sample</button>
+<div id="cleanMessage" class="message-text" style="display: none; margin-top: 5px;">Sample cleaned successfully</div>
+
+<button class="button button1 B hidden" id="measureWeightBtn" onclick="showWeightMessage()">Measure the Weight</button>
+<div id="weightMessage" class="message-text" style="display: none; margin-top: 5px;"> Weight measured successfully.<br>Final mass of the Sample (m2)</div>
+
 	  <button class="button button1 hidden B" id="moveButton8" onclick="showResult()">Perform Optical Profilometry</button>
+	  <button class="button button1 B hidden" id="calculationBtn" onclick="showCalculation()">Calculation</button>
+	  <!-- <button class="button button1 B" id="reverseBtn">Reverse</button> -->
+	   
+
+	  
+	  
+
 	  <div id="calculationContainer" style="display:none; margin-top:20px;"></div>
 
 
@@ -100,6 +116,7 @@
                     </h4>
                 </center>
 				<div style="height:100% ; width:100%; position: relative;" >
+					<div id="calculationContainer" style="display:none; margin-top:20px;"></div>
 				
                 <!-- SVG IMAGE PART -->
 				<div id="elementName"></div>
@@ -3321,7 +3338,8 @@
 
 
 
-<h1 id="out" style="margin: -25px 8px 8px;">OUTPUT</h1>
+<h1 id="out" style="text-align: center; margin-top: -60px; margin-bottom: 10px;"></h1>
+
 </div>
 
 <div id="resultContainer">

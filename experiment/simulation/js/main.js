@@ -163,10 +163,9 @@ moveButton6.addEventListener('click', moveObject6);
 
 // button one by one open
 
-
 document.addEventListener('DOMContentLoaded', function () {
     const buttons = document.querySelectorAll('button');
-    
+
     function revealNextButton(currentButtonIndex) {
         if (currentButtonIndex < buttons.length - 1) {
             buttons[currentButtonIndex].disabled = true;
@@ -174,11 +173,32 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    function hidePreviousButton(currentButtonIndex) {
+        if (currentButtonIndex > 0) {
+            buttons[currentButtonIndex].classList.add('hidden');
+            buttons[currentButtonIndex - 1].disabled = true;
+        }
+    }
+
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function () {
             revealNextButton(i);
-      });
-  }
+        });
+    }
+
+    // Reverse Button Click
+    const reverseBtn = document.getElementById('reverseBtn');
+    if (reverseBtn) {
+        reverseBtn.addEventListener('click', function () {
+            // Find the last visible enabled button and reverse it
+            for (let i = buttons.length - 1; i > 0; i--) {
+                if (!buttons[i].classList.contains('hidden') && !buttons[i].disabled) {
+                    hidePreviousButton(i);
+                    break;
+                }
+            }
+        });
+    }
 });
 
 
@@ -301,6 +321,7 @@ moveButton9.addEventListener('click', startImageSlideshow);
 // const material1Button = document.getElementById('moveButton7');
 // const material2Button = document.getElementById('moveButton9');
 const moveButton8 = document.getElementById('moveButton8');
+
 const resultContainer = document.getElementById('resultContainer');
 const material1Photo = document.getElementById('material1Photo');
 const material2Photo = document.getElementById('material2Photo');
@@ -436,226 +457,6 @@ moveButton6.addEventListener('click', function () {
 
 
 
-
-
-
-
-
-
-// // MATERIAL 1
-// const images1 = document.querySelectorAll(".material1Photo");
-// let currentIndex1 = 0;
-
-// function showImage1(index) {
-//   images1.forEach((img, i) => {
-//     img.style.display = (i === index) ? "block" : "none";
-//   });
-// }
-
-// document.getElementById("moveButton8").addEventListener("click", () => {
-//   document.getElementById("resultContainer1").style.display = "block";
-//   currentIndex1 = 0;
-//   showImage1(currentIndex1);
-// });
-
-// document.getElementById("nextBtn1").addEventListener("click", () => {
-//   currentIndex1 = (currentIndex1 + 1) % images1.length;
-//   showImage1(currentIndex1);
-// });
-
-// document.getElementById("prevBtn1").addEventListener("click", () => {
-//   currentIndex1 = (currentIndex1 - 1 + images1.length) % images1.length;
-//   showImage1(currentIndex1);
-// });
-
-
-// // MATERIAL 2
-// const images2 = document.querySelectorAll(".material2Photo");
-// let currentIndex2 = 0;
-
-// function showImage2(index) {
-//   images2.forEach((img, i) => {
-//     img.style.display = (i === index) ? "block" : "none";
-//   });
-// }
-
-// // Example trigger to show Material 2 result:
-// document.getElementById("showMaterial2Btn").addEventListener("click", () => {
-//   document.getElementById("resultContainer2").style.display = "block";
-//   currentIndex2 = 0;
-//   showImage2(currentIndex2);
-// });
-
-// document.getElementById("nextBtn2").addEventListener("click", () => {
-//   currentIndex2 = (currentIndex2 + 1) % images2.length;
-//   showImage2(currentIndex2);
-// });
-
-// document.getElementById("prevBtn2").addEventListener("click", () => {
-//   currentIndex2 = (currentIndex2 - 1 + images2.length) % images2.length;
-//   showImage2(currentIndex2);
-// });
-
-
-
-
-
-// let selectedRPM = null;
-// let currentindex = 0;
-// let currentImages = [];
-
-// function selectRPM(rpm) {
-//   selectedRPM = rpm;
-//   document.getElementById("moveButton8").classList.remove("hidden");
-// }
-
-// function showResult() {
-//   if (!selectedRPM) return;
-
-//   // Get all images for selected RPM
-//   currentImages = document.querySelectorAll(`.materialPhoto.rpm${selectedRPM}`);
-  
-//   // Hide all images
-//   document.querySelectorAll('.materialPhoto').forEach(img => img.style.display = "none");
-
-//   // Show container and first image
-//   document.getElementById("resultContainer").style.display = "block";
-//   currentindex = 0;
-//   showImage(currentindex);
-// }
-
-// function showImage(index) {
-//   currentImages.forEach((img, i) => {
-//     img.style.display = (i === index) ? "block" : "none";
-//   });
-// }
-
-// document.getElementById("nextBtn").addEventListener("click", () => {
-//   currentindex = (currentindex + 1) % currentImages.length;
-//   showImage(currentindex);
-// });
-
-// document.getElementById("prevBtn").addEventListener("click", () => {
-//   currentindex = (currentindex - 1 + currentImages.length) % currentImages.length;
-//   showImage(currentindex);
-// });
-
-
-
-
-
-// let selectedRPM = null;
-// let currentindex = 0;
-// let currentImages = [];
-
-// function selectRPM(rpm) {
-//   selectedRPM = rpm;
-//   document.getElementById("moveButton8").classList.remove("hidden");
-// }
-
-// function showResult() {
-//   if (!selectedRPM) return;
-
-//   // Hide all images
-//   document.querySelectorAll('.materialPhoto').forEach(img => img.style.display = "none");
-
-//   // Filter relevant images
-//   currentImages = document.querySelectorAll(`.materialPhoto.rpm${selectedRPM}`);
-
-//   // Show result box
-//   document.getElementById("resultContainer").style.display = "block";
-//   currentindex = 0;
-//   showImage(currentindex);
-// }
-
-// function showImage(index) {
-//   currentImages.forEach((img, i) => {
-//     img.style.display = (i === index) ? "block" : "none";
-//   });
-
-//   const currentImg = currentImages[index];
-//   document.getElementById("imageLabel").innerHTML = `<b>${currentImg.dataset.label}</b>`;
-//   document.getElementById("imageDescription").innerText = currentImg.dataset.desc;
-// }
-
-// document.getElementById("nextBtn").addEventListener("click", () => {
-//   currentindex = (currentindex + 1) % currentImages.length;
-//   showImage(currentindex);
-// });
-
-// document.getElementById("prevBtn").addEventListener("click", () => {
-//   currentindex = (currentindex - 1 + currentImages.length) % currentImages.length;
-//   showImage(currentindex);
-// });
-// console.log("prevBtn visibility before:", document.getElementById("prevBtn"));
-
-
-
-// let selectedRPM = null;
-//   let xImage = null;
-//   let yImage = null;
-
-//   function selectRPM(rpm) {
-//     selectedRPM = rpm;
-//     document.getElementById("moveButton8").classList.remove("hidden");
-//   }
-
-//   function showResult() {
-//     if (!selectedRPM) return;
-
-//     // Hide all images
-//     document.querySelectorAll('.materialPhoto').forEach(img => img.style.display = "none");
-
-//     // Select images based on RPM
-//     if (selectedRPM === "25") {
-//       xImage = document.querySelector('img[src="out11.png"]');
-//       yImage = document.querySelector('img[src="out12.png"]');
-//     } else if (selectedRPM === "50") {
-//       xImage = document.querySelector('img[src="out21.png"]');
-//       yImage = document.querySelector('img[src="out22.png"]');
-//     }
-
-//     // Show nothing initially
-//     document.getElementById("resultContainer").style.display = "block";
-//     document.getElementById("imageLabel").innerHTML = `<b>Select a profile</b>`;
-//     document.getElementById("imageDescription").innerText = "Click X or Y to view profile.";
-//     toggleButtons(true, true);
-//   }
-
-//   function showImage(img) {
-//     document.querySelectorAll('.materialPhoto').forEach(i => i.style.display = "none");
-//     img.style.display = "block";
-//     document.getElementById("imageLabel").innerHTML = `<b>${img.dataset.label}</b>`;
-//     document.getElementById("imageDescription").innerText = img.dataset.desc;
-//   }
-
-//   function toggleButtons(xEnabled, yEnabled) {
-//     const xBtn = document.getElementById("nextBtn");
-//     const yBtn = document.getElementById("prevBtn");
-
-//     xBtn.disabled = !xEnabled;
-//     yBtn.disabled = !yEnabled;
-//   }
-
-//   // Y-Profile Button
-//   document.getElementById("prevBtn").addEventListener("click", () => {
-//     if (yImage) {
-//       showImage(yImage);
-//       toggleButtons(true, false);
-//     }
-//   });
-
-//   // X-Profile Button
-//   document.getElementById("nextBtn").addEventListener("click", () => {
-//     if (xImage) {
-//       showImage(xImage);
-//       toggleButtons(false, true);
-//     }
-//   });
-
-
-
-
 let selectedRPM = null;
   let xImage = null;
   let yImage = null;
@@ -781,29 +582,32 @@ function showCalculation() {
 
 function generateTable(data) {
   return `
-    <h3 style="text-align:center;">Test ${data.testNumber} - Calculations</h3>
     <table style="width:100%; border-collapse:collapse; margin-top:10px;" border="1">
       <tr style="background:#eee;">
         <th>Parameter</th>
         <th>Value</th>
       </tr>
-      <tr><td>Sample</td><td>${data.sample}</td></tr>
+      <tr><td>Sample<br>(Ra = Sample roughness)</td><td>${data.sample}</td></tr>
       <tr><td>Load</td><td>${data.load}</td></tr>
-      <tr><td>Speed</td><td>${data.speed}</td></tr>
-      <tr><td>Time</td><td>${data.time}</td></tr>
       <tr><td>Wear Volume (Wv)</td><td>${data.Wv} mm³</td></tr>
-      <tr><td>Mass Loss<br>(Δm = m₁ − m₂)</td><td>${data.Δm} g</td></tr>
+      <tr><td>Mass Loss<br>Δm=Change in mass<br>(Δm=m₁−m₂) </td><td>${data.Δm} g</td></tr>
       <tr><td>Coefficient of Friction (cof)</td><td>${data.cof}</td></tr>
-      <tr><td>Max Penetration (dmax)</td><td>${data.dmax}</td></tr>
+      <tr><td>Max Penetration depth (dmax)</td><td>${data.dmax}</td></tr>
       <tr><td>Specific Wear Rate (Sp. Wr)</td><td>${data.SpWr1} mm³/N·m</td></tr>
       <tr><td>Wear Rate (Wr)</td><td>${data.Wr1} (mass), ${data.Wr2} (volume)</td></tr>
     </table>
     <p style="margin-top:10px; font-style:italic; font-size:14px;">
-      Ra = Sample roughness, Δm = Change in mass, Wr = Wear rate, Wv = Wear volume, dmax = Max penetration depth, cof = Coefficient of friction,
-      m1: Initial mass of the sample before the wear test
-      m2: Final mass of the sample after the wear test
+      
     </p>
   `;
+}
+
+function showCalculationButtonsAfterDelay() {
+  setTimeout(() => {
+    document.getElementById("calculationBtn").classList.remove("hidden");
+    document.getElementById("cleanSampleBtn").classList.remove("hidden");
+    document.getElementById("measureWeightBtn").classList.remove("hidden");
+  }, 5000); // 5 seconds
 }
 
 
@@ -811,4 +615,36 @@ function selectRPM(rpm) {
   selectedRPM = rpm;
   document.getElementById("moveButton8").classList.remove("hidden");  // Show Result button
   document.getElementById("calculationBtn").classList.remove("hidden");  // Show Calculation button
+  const calcBtn = document.getElementById('calculationBtn');
+  const cleanBtn = document.getElementById("cleanSampleBtn");
+  const weightBtn = document.getElementById("measureWeightBtn");
+  calcBtn.style.display = 'none';
+  cleanBtn.style.display = 'none';
+  weightBtn.style.display = 'none';
+
+
+  // Show it again after 5 seconds
+  setTimeout(() => {
+    calcBtn.style.display = 'inline-block';
+    cleanBtn.classList.remove('hidden');
+    cleanBtn.style.display = 'inline-block';
+    weightBtn.classList.remove('hidden');
+    weightBtn.style.display = 'inline-block';
+  }, 5000);
+  
 }
+
+
+
+function showinitialMessage() {
+  document.getElementById("initialMessage").style.display = "block";
+}
+
+function showCleanMessage() {
+  document.getElementById("cleanMessage").style.display = "block";
+}
+
+function showWeightMessage() {
+  document.getElementById("weightMessage").style.display = "block";
+}
+
