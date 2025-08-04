@@ -663,3 +663,19 @@ function showWeightMessage() {
 function showcMessage() {
   document.getElementById("cMessage").style.display = "block";
 }
+
+
+
+
+function openFormulaModal() {
+  document.getElementById("formulaModal").style.display = "block";
+
+  // 🔁 Ask MathJax to re-typeset formulas inside modal
+  if (window.MathJax) {
+    MathJax.typesetPromise();
+  }
+}
+
+function closeFormulaModal() {
+  document.getElementById("formulaModal").style.display = "none";
+}
