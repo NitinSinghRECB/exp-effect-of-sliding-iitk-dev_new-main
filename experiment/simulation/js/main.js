@@ -604,7 +604,7 @@ function showCalculation() {
     // Test 2 Data from table
     container.innerHTML = generateTable({
       testNumber: "2",
-      sample: "316 L stainless steel (Ra = 28 nm)",
+      sample: "316 L stainless steel<br>(Ra = 28 nm)",
       load: "10 N",
       speed: "25 RPM",
       time: "30 min",
@@ -654,7 +654,7 @@ function generateTable(data) {
       <tr><td>Coefficient of Friction (cof)<br>Obtained from Tribometer</td><td>${data.cof}</td></tr>
       <tr><td>Max Penetration depth (dmax)</td><td>${data.dmax}</td></tr>
       <tr><td>Specific Wear Rate (Sp. Wr)</td><td>${data.SpWr1} mm³/N·m</td></tr>
-      <tr><td>Wear Rate (Wr)</td><td>${data.Wr1} (mass)</td></tr>
+      <tr><td>Wear Rate (Wr)</td><td>${data.Wr1}</td></tr>
     </table>
     <p style="margin-top:10px; font-style:italic; font-size:14px;">
       

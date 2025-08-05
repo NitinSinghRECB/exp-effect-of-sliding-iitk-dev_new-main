@@ -108,16 +108,14 @@
 
 					<button class="button button1 hidden B" id="moveButton8" onclick="showResult()">Perform Optical
 						Profilometry</button>
+					<button class="button button1 B hidden" onclick="openFormulaModal()">Formulae Used</button>
 					<button class="button button1 B hidden" id="calculationBtn"
 						onclick="showCalculation()">Calculation</button>
 					<!-- <button class="button button1 B" id="reverseBtn">Reverse</button> -->
 					<button class="button button1 B hidden" id="cBtn" onclick="showcMessage()">Conclusion</button>
-					<button class="button button1 B hidden" onclick="openFormulaModal()">Formulae Used</button>
+					
 
-					<div id="cMessage" class="message-text"
-						style="display: none; margin-top: 5px; font-size:20px;font-weight: bold;">
-						As the sliding speed (RPM) increases, the wear rate of the material also increases.
-					</div>
+					
 
 
 
@@ -4289,7 +4287,7 @@
 							data-desc="
     ΔX: Represents the distance between the two vertical markers Red line (R) on the left Green line (M) on the right
 	ΔZ: is the difference in height between The horizontal green line (surface level) The lowest point of the blue profile curve between the red and green lines
-	ΔX = -2.4584 mm&#10;ΔZ = -23.0632 μm">
+	ΔX = -2.4584 mm&#10;ΔZ = -23.0632 μm, dmax=ΔZ">
 						<img class="materialPhoto rpm25" src="out12.png" alt="Material 1" data-label="Y-Profile"
 							data-desc="
 	ΔX: Represents the distance between the two vertical markers Red line (R) on the left Green line (M) on the right
@@ -4322,12 +4320,32 @@
 					</div>
 					<!-- <div id="calculationContainer" style="display:none; margin-top:20px;"></div> -->
 				</div>
-
+<div id="cMessage" class="message-text"
+						style="display: none;
+    position: static;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(10%);
+	transform: translateY(-10%);
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #f9f9f9;
+    padding: 12px 24px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    text-align: center;">
+						Conclusion:
+						As the sliding speed (RPM) increases, the wear rate of the material also increases.
+					</div>
+					
 			</section>
 			<!-- <div id="calculationContainer" style="display:none; margin-top:20px;"></div> -->
 
 		</div>
+		
 	</div>
+	
 
 	<!-- <div id="calculationContainer" style="display:none; margin-top:20px;"></div> -->
 	<div id="formulaModal" class="modal">
@@ -4371,16 +4389,20 @@
 
 			</div>
 			<div class="formula-box">
-				<p><b>5. Sliding Distance:</b></p>
-				<p>$$ L =  \pi D N t $$</p>
-				<ul>
-					<li>\( D \): Diameter of disc (m)</li>
-					<li>\( N \): Rotational speed (revolutions per second)</li>
-					<li>\( t \): Time (s)</li>
-					<li>\( L \): Sliding distance (m)</li>
-				</ul>
+  <p><b>5. Sliding Distance:</b></p>
+  <p>$$ L = \pi D N t $$</p>
+  <ul>
+    <li>\( D \): Average diameter of wear track (m)</li>
+    <li>\( D = \frac{D_1 + D_2}{2} \)</li>
+    <li>\( D_1 \): Diameter measured using X-Profile</li>
+    <li>\( D_2 \): Diameter measured using Y-Profile</li>
+    <li>\( N \): Rotational speed (revolutions per second)</li>
+    <li>\( t \): Time (s)</li>
+    <li>\( L \): Sliding distance (m)</li>
+  </ul>
+</div>
 
-			</div>
+
 			<div class="formula-box">
 				<p><b>6. Wear Rate:</b></p>
 				<p>$$ \text{Wear Rate} = \frac{\Delta V}{L} $$</p>
@@ -4396,7 +4418,7 @@
 				<ul>
 					<li>\( F_{\text{friction}} \): Frictional force (N)</li>
 					<li>\( F_{\text{normal}} \): Normal load (N)</li>
-					<li>\( \mu_{\text{Coefficient of Friction}} \): Obtained From Tribometer data </li>
+					<li>\( \mu_{\text{Coefficient of Friction}} \): Obtained From Tribometer</li>
 				</ul>
 			</div>
 		</div>
