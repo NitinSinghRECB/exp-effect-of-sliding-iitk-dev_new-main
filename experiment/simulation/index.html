@@ -82,29 +82,29 @@
 
 					<!-- <h3 class="m">Enter the Material (couple Material):</h3><br> -->
 					<button class="button button1 B " id="moveButton" onclick="showinitialMessage()">Material </button>
-					<div id="initialMessage" class="message-text" style="display: none; margin-top: 5px;">Initial Mass
-						of the Sample m1=16.445gm</div>
+					<div id="initialMessage" class="message-text" style="display: none; margin-top: 5px;"><b>Initial Mass
+						of the Sample m1=16.445gm</b></div>
 					<!-- <button class="button button1 B " id="moveButton2"  onclick="toggleButtons()">Material 2</button> -->
-					<button class="button button1 hidden B" id="moveButton3">Input Ball</button>
-					<button class="button button1 hidden B" id="moveButton4">Insert The Ball</button>
+					<button class="button button1 hidden B" id="moveButton3" >Input Ball</button>
+					<button class="button button1 hidden B" id="moveButton4" >Insert The Ball</button>
 					<!-- <button class="button button1 hidden" id="moveButton4" >Move Handle</button> -->
-					<button class="button button1 hidden B" id="moveButton5">Pin on Tribometer</button>
-					<button class="button button1 hidden  B" id="moveButton6">Input Load (10N)</button>
+					<button class="button button1 hidden B" id="moveButton5" >Pin on Tribometer</button>
+					<button class="button button1 hidden  B" id="moveButton6" >Input Load (10N)</button>
 					<div id="buttonContainer" class="hidden">
 						<h3 class="m ">Start Rotation for 30 minute:</h3>
-						<button class="button button1 B" id="moveButton7" onclick="selectRPM('25')">25 RPM</button>
-						<button class="button button1 B" id="moveButton9" onclick="selectRPM('50')">50 RPM</button>
+						<button class="button button1 B" id="moveButton7" onclick="selectRPM('25'); markClicked(this)">25 RPM <span class="tick">✔️</span></button>
+						<button class="button button1 B" id="moveButton9" onclick="selectRPM('50'); markClicked(this)">50 RPM <span class="tick">✔️</span></button>
 
 					</div>
 					<button class="button button1 B hidden" id="cleanSampleBtn" onclick="showCleanMessage()">Clean the
 						Sample</button>
-					<div id="cleanMessage" class="message-text" style="display: none; margin-top: 5px;">Sample cleaned
-						successfully</div>
+					<div id="cleanMessage" class="message-text" style="display: none; margin-top: 5px;"><b>Sample cleaned
+						successfully</b></div>
 
 					<button class="button button1 B hidden" id="measureWeightBtn" onclick="showWeightMessage()">Measure
 						the Weight</button>
-					<div id="weightMessage" class="message-text" style="display: none; margin-top: 5px;"> Weight
-						measured successfully.<br>Final mass of the Sample m2=16.444gm</div>
+					<div id="weightMessage" class="message-text" style="display: none; margin-top: 5px;"><b> Weight
+						measured successfully.</b><b>Final mass of the Sample m2=16.444gm</b></div>
 
 					<button class="button button1 hidden B" id="moveButton8" onclick="showResult()">Perform Optical
 						Profilometry</button>
@@ -112,6 +112,8 @@
 						onclick="showCalculation()">Calculation</button>
 					<!-- <button class="button button1 B" id="reverseBtn">Reverse</button> -->
 					<button class="button button1 B hidden" id="cBtn" onclick="showcMessage()">Conclusion</button>
+					<button class="button button1 B hidden" onclick="openFormulaModal()">Formulae Used</button>
+
 					<div id="cMessage" class="message-text"
 						style="display: none; margin-top: 5px; font-size:20px;font-weight: bold;">
 						As the sliding speed (RPM) increases, the wear rate of the material also increases.
@@ -121,7 +123,7 @@
 
 
 
-					<div id="calculationContainer" style="display:none; margin-top:-10px;"></div>
+					<div id="calculationContainer" style="display:none; margin-top:5px;"></div>
 
 
 
@@ -137,7 +139,7 @@
 					</h4>
 				</center>
 				<!-- Next Slide Button -->
-				<button class="next-slide-btn" onclick="openFormulaModal()">Formulae Used</button>
+				
 
 				<div style="height:100% ; width:100%; position: relative;">
 					<div id="calculationContainer" style="display:none; margin-top:20px;"></div>
@@ -4092,6 +4094,13 @@
 						<g>
 							<g>
 
+								
+
+								<!-- <image id="objectToMove" class="discImage moveable" x="1600" y="1000"
+       data-name="Stainless Steel material" style="overflow:visible;"
+       width="512" height="271" xlink:href="../simulation/disc/1-1.png"></image> -->
+
+
 								<image id="objectToMove" class="discImage" class="moveable" x="1600" y="1000"
 									id="material 1" data-name="Stainless Steel material " style="overflow:visible;"
 									width="512" height="271" xlink:href="..\simulation\disc\1-1.png"></image>
@@ -4329,17 +4338,17 @@
 
 			<div class="formula-box">
 				<p><b>1. Volume Loss:</b></p>
-				<p>$$ V = \frac{\Delta m}{\rho} $$</p>
+				<p>$$\Delta V = \frac{\Delta m}{\rho} $$</p>
 				<ul>
 					<li>\( \Delta m = m_1 - m_2 \) : Mass loss (g)</li>
 					<li>\( \rho \) : Density (g/cm³)</li>
-					<li>\( V \) : Volume loss (cm³)</li>
+					<li>\(\Delta V \) : Volume loss (cm³)</li>
 				</ul>
 			</div>
 
 			<div class="formula-box">
 				<p><b>2. Specific Wear Rate:</b></p>
-				<p>$$ k = \frac{V}{F \times L} = \frac{\Delta m}{\rho \times F \times L} $$</p>
+				<p>$$ k = \frac{\Delta V}{F \times L} = \frac{\Delta m}{\rho \times F \times L} $$</p>
 				<ul>
 					<li>\( F \) : Applied load (N)</li>
 					<li>\( L \) : Sliding distance (m)</li>
@@ -4349,7 +4358,7 @@
 
 			<div class="formula-box">
 				<p><b>3. Unit of Specific Wear Rate:</b></p>
-				<p>$$ \text{Unit of } k = \frac{\text{cm}^3}{\text{N} \cdot \text{m}} $$</p>
+				<p>$$ \text{Unit of } k = \frac{\text{m}\text{m}^3}{\text{N} \cdot \text{m}} $$</p>
 			</div>
 			<div class="formula-box">
 				<p><b>4. Mass Loss:</b></p>
@@ -4363,9 +4372,9 @@
 			</div>
 			<div class="formula-box">
 				<p><b>5. Sliding Distance:</b></p>
-				<p>$$ L = 2 \pi r N t $$</p>
+				<p>$$ L =  \pi D N t $$</p>
 				<ul>
-					<li>\( r \): Radius of disc (m)</li>
+					<li>\( D \): Diameter of disc (m)</li>
 					<li>\( N \): Rotational speed (revolutions per second)</li>
 					<li>\( t \): Time (s)</li>
 					<li>\( L \): Sliding distance (m)</li>
@@ -4374,9 +4383,9 @@
 			</div>
 			<div class="formula-box">
 				<p><b>6. Wear Rate:</b></p>
-				<p>$$ \text{Wear Rate} = \frac{V}{L} $$</p>
+				<p>$$ \text{Wear Rate} = \frac{\Delta V}{L} $$</p>
 				<ul>
-					<li>\( V \): Volume loss (cm³)</li>
+					<li>\(\Delta V \): Volume loss (cm³)</li>
 					<li>\( L \): Sliding distance (m)</li>
 				</ul>
 

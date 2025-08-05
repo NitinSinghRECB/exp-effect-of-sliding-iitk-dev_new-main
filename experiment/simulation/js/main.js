@@ -17,7 +17,7 @@ const slideshowImagesArray = [
     '../simulation/disc/14-1.png',
     '../simulation/disc/15-1.png',
     '../simulation/disc/16-1.png',
-        '../simulation/disc/1-1.png',
+    '../simulation/disc/1-1.png',
     '../simulation/disc/2-1.png',
     '../simulation/disc/3-1.png',
     '../simulation/disc/4-1.png',
@@ -39,13 +39,67 @@ function updateSlideshowImage() {
 
 function startImageSlideshow() {
     clearInterval(slideshowIntervalId);  // prevent overlapping
-    slideshowIntervalId = setInterval(updateSlideshowImage, 2);
+    slideshowIntervalId = setInterval(updateSlideshowImage, 0.1);
 
     setTimeout(() => {
         clearInterval(slideshowIntervalId);
     }, 5000);
 }
 
+
+
+
+
+// const slideshowImage = document.querySelector('.discImage');
+
+// const slideshowImagesArray = [
+//     '../simulation/disc/1-1.png',
+//     '../simulation/disc/2-1.png',
+//     '../simulation/disc/3-1.png',
+//     '../simulation/disc/4-1.png',
+//     '../simulation/disc/5-1.png',
+//     '../simulation/disc/6-1.png',
+//     '../simulation/disc/7-1.png',
+//     '../simulation/disc/8-1.png',
+//     '../simulation/disc/9-1.png',
+//     '../simulation/disc/10-1.png',
+//     '../simulation/disc/11-1.png',
+//     '../simulation/disc/12-1.png',
+//     '../simulation/disc/13-1.png',
+//     '../simulation/disc/14-1.png',
+//     '../simulation/disc/15-1.png',
+//     '../simulation/disc/16-1.png',
+//     '../simulation/disc/1-1.png',
+//     '../simulation/disc/2-1.png',
+//     '../simulation/disc/3-1.png',
+//     '../simulation/disc/4-1.png',
+//     '../simulation/disc/5-1.png',
+//     '../simulation/disc/6-1.png',
+//     '../simulation/disc/7-1.png',
+// ];
+
+// slideshowImage.style.width = "150px";
+// slideshowImage.style.height = "130px";
+// slideshowImage.setAttribute('x', '1610');
+// slideshowImage.setAttribute('y', '1002');
+
+// let slideshowCurrentIndex = 0;
+// let slideshowIntervalId;
+
+// function updateSlideshowImage() {
+//     slideshowCurrentIndex = (slideshowCurrentIndex + 1) % slideshowImagesArray.length;
+//     slideshowImage.setAttribute('href', slideshowImagesArray[slideshowCurrentIndex]);
+// }
+
+
+// function startImageSlideshow() {
+//     clearInterval(slideshowIntervalId);
+//     slideshowIntervalId = setInterval(updateSlideshowImage, 5); // slower & smoother
+
+//     setTimeout(() => {
+//         clearInterval(slideshowIntervalId);
+//     }, 5000); // stop after 5 seconds
+// }
 
 
 
@@ -168,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function revealNextButton(currentButtonIndex) {
         if (currentButtonIndex < buttons.length - 1) {
-            buttons[currentButtonIndex].disabled = true;
+            // buttons[currentButtonIndex].disabled = true;
             buttons[currentButtonIndex + 1].classList.remove('hidden');
         }
     }
@@ -590,14 +644,14 @@ function generateTable(data) {
         <th>Parameter</th>
         <th>Value</th>
       </tr>
-      <tr><td>Sample<br>(Ra = Sample roughness)</td><td>${data.sample}</td></tr>
+      <tr><td>Sample<br>(Ra = Sample roughness)<br> Obtained from Tribometer</td><td>${data.sample}</td></tr>
       <tr><td>Load</td><td>${data.load}</td></tr>
       
       <tr>
   <td>Mass Loss<br>Δm = m₁ − m₂</td>
   <td>${data.Δm} g</td>
 </tr>
-      <tr><td>Coefficient of Friction (cof)</td><td>${data.cof}</td></tr>
+      <tr><td>Coefficient of Friction (cof)<br>Obtained from Tribometer</td><td>${data.cof}</td></tr>
       <tr><td>Max Penetration depth (dmax)</td><td>${data.dmax}</td></tr>
       <tr><td>Specific Wear Rate (Sp. Wr)</td><td>${data.SpWr1} mm³/N·m</td></tr>
       <tr><td>Wear Rate (Wr)</td><td>${data.Wr1} (mass)</td></tr>
@@ -679,3 +733,25 @@ function openFormulaModal() {
 function closeFormulaModal() {
   document.getElementById("formulaModal").style.display = "none";
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function markClicked(button) {
+    // Remove tick from all buttons (if you want only one active at a time)
+    // document.querySelectorAll('.button').forEach(btn => btn.classList.remove('clicked'));
+
+    // Add tick to the clicked one
+    button.classList.add('clicked');
+  }
