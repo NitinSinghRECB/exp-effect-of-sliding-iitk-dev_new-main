@@ -767,3 +767,32 @@ function markClicked(button) {
     // Add tick to the clicked one
     button.classList.add('clicked');
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  function resetExperiment() {
+    location.reload();
+}
